@@ -1,4 +1,7 @@
 def get_exponents(f):
+	'''
+		Return the exponent of each factor 
+	'''
 	count = {}
 	for i in f:
 		if not i in count:
@@ -8,6 +11,9 @@ def get_exponents(f):
 	return count
 
 def is_prime(x):
+	'''
+		Check if the number x is prime
+	'''
 	if x == 2 or x == 3:
 		return True
 	if x % 2 == 0:
@@ -18,6 +24,9 @@ def is_prime(x):
 	return True
 
 def prime_factorise(n):
+	'''
+		Return the prime factors of a number
+	'''
 	factors = []
 	while True:
 		if n == 0 or n == 1:
@@ -26,17 +35,20 @@ def prime_factorise(n):
 			if n % i == 0:
 				if is_prime(i):
 					factors.append(i)
-					n = n/i 
+					n = n//i 
 					break
 	if len(factors) != 0:
 		factor_exponents = get_exponents(factors)
-		for factor, exponent in factor_exponents:
-			print(str(factor) + '^' + str(exponent) + '\n')
+		for factor, exponent in factor_exponents.items():
+			print(str(factor) + '^' + str(exponent))
+	else:
+		print('The number', n, 'does not have any prime factors.')
 
 def main():
 	number = input('Enter a number to find the prime factors for: ')
 	while True:
-		if isinstance(number, int):
+		if number.isdigit():
+			number = int(number)
 			break
 		number = input('Please enter an integer: ')
 	prime_factorise(number)
