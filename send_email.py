@@ -1,10 +1,13 @@
 import smtplib
 import getpass
 
+'''
+    Playing around with smtplib library
+'''
+
 smtp_object = smtplib.SMTP('smtp.gmail.com', 587)
 smtp_object.ehlo()
 smtp_object.starttls()
-
 
 email = getpass.getpass("Enter your email: ")
 password = getpass.getpass("Enter your password: ")
